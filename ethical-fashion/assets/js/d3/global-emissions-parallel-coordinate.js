@@ -1,16 +1,16 @@
 // set the dimensions and margins of the graph
-const margin = {top: 30, right: 10, bottom: 10, left: 0},
-    width = 500 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+const parallel_margin = {top: 30, right: 10, bottom: 10, left: 0},
+    width = 500 - parallel_margin.left - parallel_margin.right,
+    height = 400 - parallel_margin.top - parallel_margin.bottom;
 
 // append the svg object to the body of the page
 const svg = d3.select("#global_emissions_parallel_coordinate")
     .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", width + parallel_margin.left + parallel_margin.right)
+    .attr("height", height + parallel_margin.top + parallel_margin.bottom)
     .append("g")
     .attr("transform",
-        `translate(${margin.left},${margin.top})`);
+        `translate(${parallel_margin.left},${parallel_margin.top})`);
 
 // Parse the Data
 d3.csv("https://gist.githubusercontent.com/mt-cs/a0ab1582a2fefb5b6bbe383f9fc414a2/raw/21457b586b075701fc4461dfcbfcc10f51cf1d2c/consumption-emissions.csv").then( function(data) {
@@ -38,10 +38,6 @@ d3.csv("https://gist.githubusercontent.com/mt-cs/a0ab1582a2fefb5b6bbe383f9fc414a
         return d3.line()(dimensions.map(function(p) { return [x(p), y[p](d[p])]; }));
     }
 
-    // color palette
-    const color = d3.scaleOrdinal()
-        .range(d3.schemeTableau10);
-
     // Draw the lines
     svg
         .selectAll("myPath")
@@ -49,7 +45,8 @@ d3.csv("https://gist.githubusercontent.com/mt-cs/a0ab1582a2fefb5b6bbe383f9fc414a
         .join("path")
         .attr("d",  path)
         .style("fill", "none")
-        .attr("stroke", function(d){ return color(d.Year) })
+        .attr("stroke", "salmon")
+        .attr("stroke-width", 1.5)
         .style("opacity", 0.5)
 
     // Draw the axis:
@@ -64,8 +61,8 @@ d3.csv("https://gist.githubusercontent.com/mt-cs/a0ab1582a2fefb5b6bbe383f9fc414a
         // Add axis title
         .append("text")
         .style("text-anchor", "middle")
+        .style("font-size","11px")
         .attr("y", -9)
         .text(function(d) { return d; })
         .style("fill", "black")
-
 })

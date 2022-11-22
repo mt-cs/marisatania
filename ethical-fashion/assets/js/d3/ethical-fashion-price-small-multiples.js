@@ -72,14 +72,14 @@ d3.csv("https://gist.githubusercontent.com/mt-cs/7a7a015f377f35babfc698386dc2ec6
             .attr('x', (d, c) => 60 * c + 23)
             .attr('y', d => small_multiples_y_scales[i](+d[dimension]) - 10)
             .attr('width', 45)
-            .text(d => d[dimension])
+            .text(d => "$" + d[dimension])
             .attr('font-size', '12px')
 
         d3.select('.male-bar-' + dimension)
             .append('text')
             .attr('x', 50)
             .attr('y', price_small_multiples_single_height - 15)
-            .text(dimension)
+            .text( dimension)
             .attr('font-size', '14px')
     }
 
@@ -194,7 +194,7 @@ d3.csv("https://gist.githubusercontent.com/mt-cs/0769e3b43e00311427476811832c7d3
             .attr('x', (d, c) => 60 * c + 23)
             .attr('y', d => small_multiples_y_scales[i](+d[dimension]) - 10)
             .attr('width', 45)
-            .text(d => d[dimension])
+            .text(d => "$" + d[dimension])
             .attr('font-size', '12px')
 
         d3.select('.female-bar-' + dimension)

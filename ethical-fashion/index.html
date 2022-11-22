@@ -1,72 +1,421 @@
-<!DOCTYPE HTML>
-<!--
-	Story by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-	    <title>Ethical Fashion</title>
-	    <meta charset="utf-8" />
-	    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	    <link rel="stylesheet" href="../assets/css/main.css" />
-	    <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Ethical Fashion: Wear With Care</title>
+	<!-- META TAGS -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+	<meta name="author" content="Marisa Tania">
+	<meta name="description" content="Ethical Fashion is a data visualization project">
 
-	<!-- Wrapper -->
-	<div id="wrapper" class="divided">
+	<!-- STYLES -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/flexslider.css">
+	<link rel="stylesheet" href="assets/css/animsition.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="assets/css/owl.theme.css">
 
-	    <!-- Title -->
-	    <section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
-		<div class="content">
-		    <h1>Ethical Fashion:<br>Wear With Care</h1>
-		    <p class="major">Marisa Tania</p>
-		   <ul class="actions stacked">
-		       <li><a href="https://github.com/mt-cs/marisatania/raw/main/ethical-fashion/project_proposal_marisa.pdf" class="button big wide smooth-scroll-middle">Alpha Release</a></li>
-		   </ul>
-		</div>
-		<div class="image">
-		    <img src="../images/alyssa-strohmann.jpg" alt="" />
-		</div>
-	    </section>
-
-	    <!-- Project Description -->
-	    <section class="wrapper style1 align-center">
-		<div class="inner">
-		    <h2>ETHICAL FASHION EXPLAINED</h2>
-		    <p>The more we discover about the nightmare of fast fashion and its impact, the more change is needed in the way we produce and consume fashion. Consumerism, mass production, and the endless demand for more create a mass denial of the whole range of issues in the fashion industry.</p>
-		    <p>There is a growth in the global shift towards a more ethical and sustainable fashion. From workers’ rights to carbon footprint, from animal abuse to fashion waste, consumers are slowly aware of the concerning impact of the industry on the environment, people, and animals.</p>
-		    <p>Fashion brands have the fastest ability to affect change and conscious consumers have the greatest power to influence how each brand implements change.</p>
-		</div>
-
-
-
-	    </section>
-
-	    <!-- Footer -->
-	    <footer class="wrapper style1 align-center">
-		<div class="inner">
-		    <ul class="icons">
-			<li><a href="https://github.com/mt-cs" class="icon brands style2 fa-github" target="_blank"><span class="label">GitHub</span></a></li>
-			<li><a href="https://www.marisatania.com/" class="icon brands style2 fa-dribbble" target="_blank"><span class="label">Website</span></a></li>
-			<li><a href="https://www.linkedin.com/in/marisatania/" class="icon brands style2 fa-linkedin-in" target="_blank"><span class="label">LinkedIn</span></a></li>
-			<li><a href="mt.marisatania@gmail.com" class="icon style2 fa-envelope"><span class="label" target="_blank">Email</span></a></li>
-		    </ul>
-		    <p>&copy; Marisa Tania. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-		</div>
-	    </footer>
-	</div>
+	<!-- Fontawesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 
 	<!-- Scripts -->
-	<script src="../assets/js/jquery.min.js"></script>
-	<script src="../assets/js/jquery.scrollex.min.js"></script>
-	<script src="../assets/js/jquery.scrolly.min.js"></script>
-	<script src="../assets/js/browser.min.js"></script>
-	<script src="../assets/js/breakpoints.min.js"></script>
-	<script src="../assets/js/util.js"></script>
-	<script src="../assets/js/main.js"></script>
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
 
-	</body>
+<body class="animsition">
+	<!-- Border -->
+	<span class="frame-line top-frame visible-lg"></span>
+	<span class="frame-line right-frame visible-lg"></span>
+	<span class="frame-line bottom-frame visible-lg"></span>
+	<span class="frame-line left-frame visible-lg"></span>
+	<!-- HEADER  -->
+	<header class="main-header">
+		<div class="container-fluid">
+				<!-- box header -->
+				<div class="box-header">
+						<div class="box-logo">
+								<a href="index.html"><img src="assets/img/logo.png" width="80" alt="Logo"></a>
+						</div>
+						<!-- box-nav -->
+						<a class="box-primary-nav-trigger" href="#0">
+								<span class="box-menu-icon"></span>
+						</a>
+						<!-- box-primary-nav-trigger -->
+				</div>
+				<!-- end box header -->
+
+				<!-- nav -->
+				<nav>
+						<ul class="box-primary-nav">
+								<li class="box-label">MARISA TANIA</li>
+
+								<li><a href="https://www.marisatania.com/">Home</a> <i class="lnr lnr-home"></i></li>
+								<li><a href="https://www.marisatania.com/about">about</a></li>
+								<li><a href="https://www.marisatania.com/resume">resume</a></li>
+								<li><a href="https://www.marisatania.com/contact-marisa">contact</a></li>
+								<li><a href="https://github.com/mt-cs/marisatania/raw/main/ethical-fashion/project_proposal_marisa.pdf">alpha-release</a></li>
+
+								<li class="box-label">SOCIAL</li>
+
+								<li class="box-social"><a href="https://www.linkedin.com/in/marisatania/"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+								<li class="box-social"><a href="https://github.com/mt-cs"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+						</ul>
+				</nav>
+				<!-- end nav -->
+
+				<!-- box-intro -->
+				<section class="box-intro bg-film">
+						<div class="table-cell">
+
+								<h3 class="box-headline letters rotate-2">
+										<span class="box-words-wrapper">
+												<b class="is-visible">ETHICAL &nbsp;&nbsp; FASHION.</b>
+												<b>&nbsp;MARISA &nbsp;&nbsp; TANIA.</b>
+										</span>
+								</h3>
+								<h1>WEAR WITH CARE</h1>
+
+						</div>
+
+						<div class="mouse">
+								<div class="scroll"></div>
+						</div>
+				</section>
+				<!-- end box-intro -->
+		</div>
+	</header>
+
+	<!-- HISTORY OF AGENCY -->
+	<section id="about" class="about mt-150 mb-50">
+		<div class="container">
+			<div class="row center">
+				<div class="col-md-8 col-md-offset-2">
+					<img src="assets/img/about.png" alt="Khaki HTML Template" width="300">
+					<div class="km-space"></div>
+					<h5 class="lead">The more we discover about the nightmare of fast fashion and its impact, the more change is needed in the way we produce and consume fashion. Consumerism, mass production, and the endless demand for more create a mass denial of the whole range of issues in the fashion industry.</h5>
+					<h5 class="lead">There is a growth in the global shift towards a more ethical and sustainable fashion. From workers’ rights to carbon footprint, from animal abuse to fashion waste, consumers are slowly aware of the concerning impact of the industry on the environment, people, and animals.</h5>
+					<h5 class="lead">Fashion brands have the fastest ability to affect change and conscious consumers have the greatest power to influence how each brand implements change.</h5>
+		
+				</div>
+			</div><!-- description text -->
+		</div>
+	</section>
+
+	<!-- FACTS  -->
+	<div id="facts" class="facts mt-100 mbr-box mbr-section mbr-section--relative">
+		<div class="container">
+			<div class="row text-center">
+			    <div class="col-xs-12 col-lg-3 col-md-3">
+                    <div class="count-item">
+                        <i class="lnr lnr-tag"></i>
+                        <div class="numscroller" data-slno='1' data-min='0' data-max='80' data-delay='1' data-increment="1">80</div>
+                        <div class="count-name-intro">billion garments purchased annually across the world</div>
+                    </div>
+                </div>
+				<div class="col-xs-12 col-lg-3 col-md-3">
+                    <div class="count-item">
+                        <i class="lnr lnr-shirt"></i>
+                        <div class="numscroller" data-slno='1' data-min='0' data-max='92' data-delay='1' data-increment="1">92</div>
+                        <div class="count-name-intro">million tonnes garments produced each year end up in landfills</div>
+                    </div>
+                </div>
+                <div class="col-xs-12  col-lg-3 col-md-3">
+                    <div class="count-item">
+                        <i class="lnr lnr-users"></i>
+                        <div class="numscroller" data-slno='1' data-min='0' data-max='50' data-delay='1' data-increment="1">50</div>
+                        <div class="count-name-intro">million people work in the global garment industry</div>
+                    </div>
+                </div>
+				<div class="col-xs-12  col-lg-3 col-md-3">
+                    <div class="count-item">
+                        <i class="lnr lnr-leaf"></i>
+                        <div class="numscroller" data-slno='1' data-min='0' data-max='8' data-delay='1' data-increment="1">10</div>
+                        <div class="count-name-intro">percent of global carbon emissions caused by the fashion industry</div>
+                    </div>
+                </div>
+        	</div>
+		</div>
+	</div>
+
+	<!-- GLOBAL FASHION MARKET -->
+	<section id="team" class="team mbr-box mbr-section mbr-section--relative">
+		<svg preserveAspectRatio="none" viewBox="0 0 100 102" height="100" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			<path d="M0 0 L50 100 L100 0 Z" fill="#ffeedb" stroke="#ffeedb"></path>
+		</svg>
+		<div class="container">
+			<div class="col-md-8 col-md-offset-2 col-sm-12">
+				<div class="row center mb-100">
+					<div class="section-title-parralax">
+						<div class="process-numbers">01</div>
+						<h2>Global Fashion Market</h2>
+						<p class="module-subtitle">Revenue generated by the global apparel market steadily increased over the course of the observed time period, up until 2020, when the coronavirus (COVID-19) pandemic heavily impacted retail. In 2021, the revenue of this market was approximately 1.55 trillion U.S. dollars. According to the Consumer Market Outlook, this value will increase to almost 2 trillion U.S. dollars by 2026.
+						</p>
+						<p class="module-subtitle">In 2026, the global market value of fast fashion is forecasted to reach a value of approximately 133 billion U.S. dollars.
+						</p>
+						<p class="module-subtitle">In 2021, the global market value of secondhand and resale apparel was estimated to be worth 96 billion U.S. dollars. This value is projected to rise rapidly in the coming years, more than doubling in size from 2021 to 2025, before reaching a value of 218 billion dollars in 2026.
+						</p>
+						<p class="module-subtitle">Ethical fashion is hard to define as there are numerous criteria and interpretations of what makes a company ethical. In this statistic, it is defined as fair trade, sustainable, with no abuse or exploitation during any stage of the supply chain. The value of the ethical fashion market is estimated to increase by over three billion U.S. dollars from 2021 to 2025, when it is projected to reach a value of approximately 10 billion dollars.
+						</p>		
+					</div>
+				</div>
+			</div>
+			<div class="row">
+
+
+                <!-- single member -->
+                <div class="team-member col-md-4 col-sm-4 text-center">
+                    <div class="member-thumb">
+                    	<div class="cover"><div class="cover-inner-left"></div></div>
+                        <img src="assets/img/right.png" alt="Collage" class="img-responsive">
+                        <div class="team_cover"><div class="team_cover_inner"></div></div>
+                    </div>
+                </div>
+                <!-- end single member -->
+
+                <!-- data visualization -->
+                <div class="team-member col-md-4 col-sm-4 text-center">
+					<!-- global fashion market -->
+					<h6>Global fashion market value</h6> 
+					<h6>2020-2025</h6>
+					<p>Estimated value of three fashion market worldwide from 2020 to 2025 (in billion U.S. dollars)</p>
+				
+					<div id="global-fashion-market">
+						<div id="global-fashion-market-small-multiples">
+							<svg></svg>
+							<script src="assets/js/d3/global-fashion-market-small-multiple-line.js"></script>
+						</div>
+					</div>
+					<!-- end global fashion market -->
+                </div>
+				
+                <!-- end data visualizarion -->
+
+                <!-- single member -->
+                <div class="team-member col-md-4 col-sm-4 text-center ">
+                    <div class="member-thumb">
+                    	<div class="cover"><div class="cover-inner-right"></div></div>
+                        <img src="assets/img/left.png" alt="Collage" class="img-responsive">
+                        <div class="team_cover"><div class="team_cover_inner"></div></div>
+                    </div>
+                </div>
+                <!-- end single member -->
+            </div>
+		</div>
+		<div class="bottom-separator hidden-xs"></div>
+	</section>
+
+	<!-- GLOBAL EMISSIONS -->
+	<section id="services" class="services mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--full-height mbr-section--bg-adapted mbr-parallax-background"  style="background-image: url(assets/img/emissions.jpg);">
+		<div class="section-overlay"></div>
+		<div class="container">
+			<div class="row center">
+				<div class="col-md-8 col-md-offset-2 col-sm-12">
+					<div class="section-title-parralax">
+						<div class="process-numbers">02</div>
+						<h2>Global emissions</h2>
+						<p class="module-subtitle">The apparel industry is considered one of the worst polluting industries, generating huge volumes of greenhouse gas emissions. It was calculated that in 2019, the apparel industry emitted approximately 1.01 gigatons of carbon dioxide equivalents into the atmosphere. This is estimated to increase to 1.6 gigatons by 2030 if no drastic action is taken.
+						</p>
+						<p class="module-subtitle">In 2021, the apparent consumption of apparel worldwide was approximately 168.4 billion pieces. According to estimates of the Statista Consumer Market Outlook, this value is expected to increase in the coming years to 197.3 billion pieces in 2026.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="about" class="about mt-150 mb-50">
+		<div class="container">
+			<div class="row center">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="km-space"></div>
+					<h2>Consumption Volume vs. Carbon Dioxide Emissions</h2> 
+					<h2>of apparel industry</h2>
+					<p>Projection worldwide from 2019 to 2026 (in billion pieces and in megatons)</p>
+					<!-- <div id="global-emissions">
+						<div id="global_emissions_scatterplot">
+							<svg></svg>
+							<script src="assets/js/d3/global-emissions-scatterplot.js"></script>
+						</div>
+						<div id="global_emissions_parallel_coordinate">
+							<svg></svg>
+							<script src="assets/js/d3/global-emissions-parallel-coordinate.js"></script>
+						</div>
+					</div> -->
+					<div class="row" id="global-emissions">
+						<div class="col-lg-6 right col-full right-0">
+							<div id="global_emissions_scatterplot">
+								<svg></svg>
+								<script src="assets/js/d3/global-emissions-scatterplot.js"></script>
+							</div>
+						</div>
+						<div class="col-lg-6 left col-full left-0">
+							<div id="global_emissions_parallel_coordinate">
+								<svg></svg>
+								<script src="assets/js/d3/global-emissions-parallel-coordinate.js"></script>
+							</div>
+						</div>
+					</div>	
+					<div class="km-space"></div>
+
+				</div>	
+			</div><!-- description text -->
+		</div>
+	</section>
+
+	<!-- PRICE -->
+	<section class="portfolio">
+		<div class="top-right-separator hidden-xs"></div>
+		<div class="container">
+			<div class="col-md-8 col-md-offset-2 col-sm-12">
+				<div class="row center">
+					<div class="section-title mb-100">
+						<div class="process-numbers">03</div>
+						<h2>Price</h2>
+						<p class="module-subtitle">In 2021, eco clothing for men at mass retailers in the United States tended to be sold at a slightly higher price point than the average market price. The only category of clothing that was actually cheaper as an eco product was outerwear. The category with the biggest price gap was bottoms, with a 12 U.S. dollar price difference.</p>
+						<p class="module-subtitle">In 2021, eco clothing for women at mass retailers in the United States tended to be sold at a slightly higher price point than the average market price for similar items of clothing. The only category of clothing that was actually cheaper as an eco product was outerwear. The category with the biggest price gap was footwear, as eco shoes were on average 18 U.S. dollars more expensive.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 right col-full right-0">
+						<p>Male</p>
+						<div id="male-small-multiples">
+							<svg></svg>
+						</div>
+					</div>
+					<div class="col-lg-6 left col-full left-0">
+						<p>Female</p>
+						<div id="female-small-multiples">
+							<svg></svg>
+						</div>
+					</div>
+					<script src="assets/js/d3/ethical-fashion-price-small-multiples.js"></script>
+				</div>	
+			</div>
+		</div>
+		<!-- end container -->
+	</section>
+	<!-- price -->
+
+	<!-- BORDER -->
+	<div id="clients" class="clients mt-100 mbr-box mbr-section mbr-section--relative">
+		<svg preserveAspectRatio="none" viewBox="0 0 100 102" height="100" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			<path d="M0 0 L50 100 L100 0 Z" fill="#fff" stroke="#fff"></path>
+		</svg>
+		<div class="container">
+		</div>
+	</div>
+
+	<!-- FTI -->
+	<section id="pricing" class="pricing mbr-box mbr-section mbr-section--relative mbr-section--full-height mbr-section--bg-adapted">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 col-sm-12">
+					<div class="row center">
+						<div class="section-title mb-100">
+							<div class="process-numbers">04</div>
+							<h2>Transparancy</h2>
+							<p class="module-subtitle">This year, 250 of the world’s largest fashion brands and retailers were reviewed and ranked according to what information they disclose about their social and environmental policies, practices and impacts, in their operations and supply chain.</p> 
+							<p class="module-subtitle">Fashion Transparancy Index is a tool to push and incentivise the world’s largest fashion brands to be more transparent about their social and environmental efforts. Transparency is foundational to achieving systemic change in the global fashion industry.</p>
+							<p class="module-subtitle">Transparency is a first step; it is not radical, but it is necessary. When brands publicly disclose information, it allows anyone to scrutinise their policies, hold them accountable for their claims and advocate for positive change.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<svg preserveAspectRatio="none" viewBox="0 0 100 102" height="100" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+				<path d="M0 0 L50 100 L100 0 Z" fill="#ffeedb" stroke="#ffeedb"></path>
+			</svg>
+			<div class="row center" id="fti">
+				<h4>Most Transparent Fashion Company Worldwide</h4>
+				<p>Transparency Index Score 2022</p>
+				<div class="col-lg-6 left col-full left-0">
+					<div id="fti_radar_chart">
+						<iframe onload="resizeIframe(this)" frameborder="0" seamless width="100%" height ="700" src="assets/src/fti-radar-chart.html">
+						</iframe>
+					</div>
+				</div>
+				<div class="col-lg-6 right col-full right-0">
+					<div id="fti_lollipop_chart">
+						<iframe onload="resizeIframe(this)" frameborder="0" seamless width="100%" height ="700" src="assets/src/fti-lollipop-chart.html">
+						</iframe>
+					</div>
+				</div>
+			</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="main-footer">
+		<svg preserveAspectRatio="none" viewBox="0 0 100 102" height="100" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="svgcolor-light">
+			<path d="M0 0 L50 100 L100 0 Z" fill="#fff" stroke="#fff"></path>
+		</svg>
+            <div class="container">
+
+                <!-- Start Copyright -->
+                <div class="copyright-section">
+                    <div class="row center">
+                        
+                        <p>&copy; 2022 Ethical Fashion -  All Rights Reserved <a href="#">Marisa Tania</a> </p>
+                        
+                    </div><!-- .row -->
+                </div>
+                <!-- End Copyright -->
+            </div>
+	</footer>
+
+	<!-- SCRIPTS -->
+	<script type="text/javascript" src="assets/js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="assets/js/animated-headline.js"></script>
+	<script type="text/javascript" src="assets/js/menu.js"></script>
+	<script type="text/javascript" src="assets/js/modernizr.js"></script>
+	<script type="text/javascript" src="assets/js/isotope.pkgd.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.animsition.min.js"></script>
+	<script type="text/javascript" src="assets/js/init.js"></script>
+	<script type="text/javascript" src="assets/js/main.js"></script>
+	<script type="text/javascript" src="assets/js/smooth-scroll.js"></script>
+	<script type="text/javascript" src="assets/js/numscroller.js"></script>
+	<script type="text/javascript" src="assets/js/wow.min.js"></script>
+	<script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+
+	<script type="text/javascript">
+		$(window).load(function() {
+			new WOW().init();
+
+			// initialise flexslider
+			$('.flexslider').flexslider({
+				animation: "fade",
+				directionNav: true,
+				controlNav: false,
+				keyboardNav: true,
+				slideToStart: 0,
+				animationLoop: true,
+				pauseOnHover: false,
+				slideshowSpeed: 4000,
+			});
+
+			smoothScroll.init();
+
+			// initialize isotope
+			var $container = $('.portfolio_container');
+			$container.isotope({
+				filter: '*',
+			});
+
+			$('.portfolio_filter a').click(function(){
+				$('.portfolio_filter .active').removeClass('active');
+				$(this).addClass('active');
+
+				var selector = $(this).attr('data-filter');
+				$container.isotope({
+					filter: selector,
+					animationOptions: {
+						duration: 500,
+						animationEngine : "jquery"
+					}
+				});
+				return false;
+			});
+		});
+	</script>
+</body>
 </html>
-

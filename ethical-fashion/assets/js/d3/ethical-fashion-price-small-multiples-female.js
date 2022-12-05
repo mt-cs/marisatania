@@ -1,131 +1,85 @@
 // define margin and svg size
-const price_small_multiples_margin = { top: 10, bottom: 10, left: 50, right: 10 }
-const price_small_multiples_width = 500
-const price_small_multiples_height = 600
+const price_small_multiples_female_margin = { top: 10, bottom: 10, left: 20, right: 10 }
+const price_small_multiples_female_width = 500;
+const price_small_multiples_female_height = 600;
 
-const price_small_multiples_single_width = 220
-const price_small_multiples_single_height = 130
+const price_small_multiples_female_single_width = 220;
+const price_small_multiples_female_single_height = 130;
 
-const small_multiples_dimensions = ['Tops','Bottom','Outerwear','Footwear'];
+const small_multiples_female_dimensions = ['Top','Tops','Bottom','Outerwear','Footwear'];
 
 // female stats
-d3.csv("https://gist.githubusercontent.com/mt-cs/0769e3b43e00311427476811832c7d31/raw/eff45f007c8847b0dd8e6d4b853412c5fc36f060/female-price.csv").then( function(data) {
-    
-    const small_multiples_y_scales = []
-    for (let i = 0; i < small_multiples_dimensions.length; i++) {
-        small_multiples_y_scales.push(
+d3.csv("https://gist.githubusercontent.com/mt-cs/0769e3b43e00311427476811832c7d31/raw/09046611c32fd719d1760fe3ef8c850d4d5ce13e/female-price.csv").then( function(data) {
+    const small_multiples_female_y_scales = []
+    for (let i = 0; i < small_multiples_female_dimensions.length; i++) {
+        small_multiples_female_y_scales.push(
             d3
                 .scaleLinear()
-                .domain([0, +d3.max(data, d => +d[small_multiples_dimensions[i]])])
+                .domain([0, +d3.max(data, d => +d[small_multiples_female_dimensions[i]])])
                 .range([
-                    (price_small_multiples_single_height / 4) * 3,
-                    price_small_multiples_single_height / 4
+                    (price_small_multiples_female_single_height / 4) * 3,
+                    price_small_multiples_female_single_height / 4
                 ])
         )
     }
 
     d3.select('#female-small-multiples')
         .selectAll('svg')
-        .data(small_multiples_dimensions)
+        .data(small_multiples_female_dimensions)
         .enter()
         .append('svg')
-        .attr('width', price_small_multiples_single_width)
-        .attr('height', price_small_multiples_single_height)
+        .attr('width', price_small_multiples_female_single_width)
+        .attr('height', price_small_multiples_female_single_height)
         .append('g')
         .attr('class', d => 'female-bar-' + d)
         .attr(
             'transform',
             'translate(' +
-            price_small_multiples_margin.left +
+            price_small_multiples_female_margin.left +
             ',' +
-            price_small_multiples_margin.top +
+            price_small_multiples_female_margin.top +
             ')'
         )
 
-    for (let i = 0; i < small_multiples_dimensions.length; i++) {
-        let dimension = small_multiples_dimensions[i]
-        d3.select('.female-bar-' + dimension)
-            .selectAll('female-bars-' + dimension)
+    for (let i = 0; i < small_multiples_female_dimensions.length; i++) {
+        let female_dimension = small_multiples_female_dimensions[i]
+        d3.select('.female-bar-' + female_dimension)
+            .selectAll('female-bars-' + female_dimension)
             .data(data)
             .enter()
             .append('rect')
             .attr('x', (d, c) => 60 * c + 10)
-            .attr('y', d => small_multiples_y_scales[i](+d[dimension]))
+            .attr('y', d => small_multiples_female_y_scales[i](+d[female_dimension]))
             .attr('width', 45)
             .attr(
                 'height',
                 d =>
-                    small_multiples_y_scales[i](0) -
-                    small_multiples_y_scales[i](+d[dimension])
+                    small_multiples_female_y_scales[i](0) -
+                    small_multiples_female_y_scales[i](+d[female_dimension])
             )
             .attr('fill', (d, i) => {
                 if (i === 0) {
-                    return 'turquoise'
+                    return '#8dd3c7'
                 }
-                return 'salmon'
+                return '#fb8072'
             })
 
-        d3.select('.female-bar-' + dimension)
-            .selectAll('female-text-' + dimension)
+        d3.select('.female-bar-' + female_dimension)
+            .selectAll('female-text-' + female_dimension)
             .data(data)
             .enter()
             .append('text')
             .attr('x', (d, c) => 60 * c + 23)
-            .attr('y', d => small_multiples_y_scales[i](+d[dimension]) - 10)
+            .attr('y', d => small_multiples_female_y_scales[i](+d[female_dimension]) - 10)
             .attr('width', 45)
-            .text(d => d[dimension])
+            .text(d => "$" + d[female_dimension])
             .attr('font-size', '12px')
 
-        d3.select('.female-bar-' + dimension)
+        d3.select('.female-bar-' + female_dimension)
             .append('text')
-            .attr('x', 50)
-            .attr('y', price_small_multiples_single_height - 15)
-            .text(dimension)
+            .attr('x', 40)
+            .attr('y', price_small_multiples_female_single_height - 15)
+            .text(female_dimension)
             .attr('font-size', '14px')
     }
-
-    // legends
-    const female_small_multiples_legends = d3
-        .select('#female-small-multiples-legends')
-        .append('svg')
-        .attr(
-            'width',
-            price_small_multiples_width +
-            price_small_multiples_margin.left +
-            price_small_multiples_margin.right
-        )
-        .attr('height', 30)
-        .append('g')
-        .attr(
-            'transform',
-            'translate(' + price_small_multiples_width / 3 + ',' + 0 + ')'
-        )
-
-    female_small_multiples_legends
-        .append('rect')
-        .attr('x', 10)
-        .attr('y', 10)
-        .attr('width', 15)
-        .attr('height', 15)
-        .attr('fill', 'turquoise')
-
-    female_small_multiples_legends
-        .append('text')
-        .attr('x', 40)
-        .attr('y', 23)
-        .text('Eco Clothing')
-
-    female_small_multiples_legends
-        .append('rect')
-        .attr('x', 150)
-        .attr('y', 10)
-        .attr('width', 15)
-        .attr('height', 15)
-        .attr('fill','salmon')
-
-    female_small_multiples_legends
-        .append('text')
-        .attr('x', 180)
-        .attr('y', 23)
-        .text('Average Market')
 })

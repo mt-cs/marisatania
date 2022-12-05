@@ -1,6 +1,6 @@
 
 // define margin and svg size
-const global_fashion_market_margin = { top: 10, bottom: 40, left: 30, right: 20 };
+const global_fashion_market_margin = { top: 20, bottom: 40, left: 30, right: 20 };
 const global_fashion_market_width = 200;
 const global_fashion_market_height = 180;
 
@@ -68,7 +68,7 @@ d3.csv("https://gist.githubusercontent.com/mt-cs/b96f60535299afcbebf3085302d450b
         );
 
     const global_fashion_market_colors = [
-        "Turquoise","CornflowerBlue","Salmon"
+        "#8dd3c7","#80b1d3","#fb8072"
     ]
 
     for (let i = 0; i < global_fashion_market_dimensions.length; i++) {
@@ -166,7 +166,7 @@ d3.csv("https://gist.githubusercontent.com/mt-cs/b96f60535299afcbebf3085302d450b
         // add labels
         d3.select(".global-fashion-market-" + dimension)
             .append("text")
-            .attr("x", global_fashion_market_width / 2 - 20)
+            .attr("x", global_fashion_market_width / 3 - 10)
             .attr("y", global_fashion_market_height + 30)
             .text(d => {
                 if (d === "ethical") {
@@ -177,6 +177,20 @@ d3.csv("https://gist.githubusercontent.com/mt-cs/b96f60535299afcbebf3085302d450b
                     return "Fast Fashion";
                 }
             })
-            .attr("font-size", "10px")
+            .attr("font-size", "13px")
+
+        d3.select(".global-fashion-market-" + dimension)
+            .append("text")
+            .attr("x", -20)
+            .attr("y", -5)
+            .text("Estimated market value (billion USD)")
+            .attr("font-size", "11px")
+
+        d3.select(".global-fashion-market-" + dimension)
+            .append("text")
+            .attr("x", global_fashion_market_width - 20)
+            .attr("y", global_fashion_market_height - 10)
+            .text("Year")
+            .attr("font-size", "11px")
     }
 })

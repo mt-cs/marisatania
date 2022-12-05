@@ -1,32 +1,41 @@
-  /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
+/* Radar chart original code by Nadieh Bremer - VisualCinnamon.com */
 
   ////////////////////////////////////////////////////////////// 
   //////////////////////// Set-Up ////////////////////////////// 
   ////////////////////////////////////////////////////////////// 
 
-  var margin = {top: 100, right: 100, bottom: 100, left: 100},
-    width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
-    height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+var margin = {top: 100, right: 100, bottom: 100, left: 100},
+	width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+	height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 
   ////////////////////////////////////////////////////////////// 
   ////////////////////////// Data ////////////////////////////// 
   ////////////////////////////////////////////////////////////// 
-var data = [[{axis:"Purchasing Practice", value:0.5},
-           {axis:"Gender and Racial Equality", value:0.1},
-           {axis:"Sustainable Sourcing and Material", value:0.6},
-           {axis:"Overconsumption Waste and Circularity", value:0.5},
-           {axis:"Water and Chemical", value:0.4},
-           {axis:"Climate Change and Biodiversity", value:0.5}]]
-  
+
+// var data = [[{axis:"Purchasing Practice", value:0.5},
+//            {axis:"Gender and Racial Equality", value:0.1},
+//            {axis:"Sustainable Sourcing and Material", value:0.6},
+//            {axis:"Overconsumption Waste and Circularity", value:0.5},
+//            {axis:"Water and Chemical", value:0.4},
+//            {axis:"Climate Change and Biodiversity", value:0.5}]]
+
+var data = [[{axis:"Animal Welfare", value:0.576},
+		   {axis:"Biodiversity & Conservation", value:0.556},
+           {axis:"Diversity & Inclusion", value:0.75},
+           {axis:"Energy & Greenhouse Gas Emissions", value:0.7},
+           {axis:"Equal Pay", value:0.5},
+           {axis:"Health & Safety", value:0.72},
+           {axis:"Waste & Recycling", value:0.38}]]
+ 
   ////////////////////////////////////////////////////////////// 
   //////////////////// Draw the Chart ////////////////////////// 
   ////////////////////////////////////////////////////////////// 
 
-  //var color = d3.scaleOrdinal()
-    //.range(["#EDC951","#CC333F","#00A0B0"]);
+
+
 
 var color = d3.scaleOrdinal()
-    .range(["salmon"]);
+    .range(["#fb8072"]);
 
   var radarChartOptions = {
     w: width,
@@ -41,13 +50,6 @@ var color = d3.scaleOrdinal()
   //Callfunction to draw the Radar chart
   RadarChart(".radarChart", data, radarChartOptions);
 
-
-/////////////////////////////////////////////////////////
-/////////////// The Radar Chart Function ////////////////
-/////////////// Written by Nadieh Bremer ////////////////
-////////////////// VisualCinnamon.com ///////////////////
-/////////// Inspired by the code of alangrafu ///////////
-/////////////////////////////////////////////////////////
 	
 function RadarChart(id, data, options) {
 	var cfg = {
@@ -70,8 +72,8 @@ function RadarChart(id, data, options) {
 	if('undefined' !== typeof options){
 	  for(var i in options){
 		if('undefined' !== typeof options[i]){ cfg[i] = options[i]; }
-	  }//for i
-	}//if
+	  }
+	}
 	
 	//If the supplied maxValue is smaller than the actual one, replace by the max in the data
 	var maxValue = 
@@ -116,7 +118,7 @@ function RadarChart(id, data, options) {
 		feMerge = filter.append('feMerge'),
 		feMergeNode_1 = feMerge.append('feMergeNode').attr('in','coloredBlur'),
 		feMergeNode_2 = feMerge.append('feMergeNode').attr('in','SourceGraphic');
-
+	
 	/////////////////////////////////////////////////////////
 	/////////////// Draw the Circular grid //////////////////
 	/////////////////////////////////////////////////////////
@@ -182,17 +184,11 @@ function RadarChart(id, data, options) {
 	///////////// Draw the radar chart blobs ////////////////
 	/////////////////////////////////////////////////////////
 	
-  
-  
 	//The radial line function
 	var radarLine = d3.radialLine()
 		.radius(function(d) { return rScale(d.value); })
 		.angle(function(d,i) {	return i*angleSlice; })
     .curve(d3.curveLinearClosed);
-		
-//	if(cfg.roundStrokes) {
-//		radarLine.curve(d3.curveCardinalClosed);
-//	}
 				 
 	//Create a wrapper for the blobs	
 	var blobWrapper = g.selectAll(".radarWrapper")
@@ -232,13 +228,6 @@ function RadarChart(id, data, options) {
 		.style("stroke", function(d,i) { return cfg.color(i); })
 		.style("fill", "none")
 		.style("filter" , "url(#glow)");		
-	
- 
- 
-  
-  
-  
-  
   
   //Append the circles
 	blobWrapper.selectAll(".radarCircle")
@@ -251,13 +240,6 @@ function RadarChart(id, data, options) {
 		.style("fill", function(d,i,j) { return cfg.color(j); })
 		.style("fill-opacity", 0.8);
 
- 
-  
-  
-  
-  
-
-  
 	/////////////////////////////////////////////////////////
 	//////// Append invisible circles for tooltip ///////////
 	/////////////////////////////////////////////////////////
@@ -297,10 +279,7 @@ function RadarChart(id, data, options) {
 	//Set up the small tooltip for when you hover over a circle
 	var tooltip = g.append("text")
 		.attr("class", "tooltip")
-		.style("opacity", 0);
-	
-  
-  
+		.style("opacity", 0); 
   
 	/////////////////////////////////////////////////////////
 	/////////////////// Helper Function /////////////////////

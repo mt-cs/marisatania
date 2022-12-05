@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
 const fti_margin = {top: 10, right: 30, bottom: 40, left: 150},
     fti_width = 600 - fti_margin.left - fti_margin.right,
-    fti_height = 2400 - fti_margin.top - fti_margin.bottom;
+    fti_height = 670 - fti_margin.top - fti_margin.bottom;
 
 // append the svg object to the body of the page
 const svg = d3.select("#fti_lollipop_chart")
@@ -12,7 +12,7 @@ const svg = d3.select("#fti_lollipop_chart")
     .attr("transform", `translate(${fti_margin.left}, ${fti_margin.top})`);
 
 // Parse the Data
-d3.csv("https://gist.githubusercontent.com/mt-cs/7b5ad86c3990c64dfd2b53a0bf73dc56/raw/c79c97e90290a0da5e4dd28029022eaeb615a181/fti.csv").then( function(data) {
+d3.csv("https://gist.githubusercontent.com/mt-cs/219b191cff5410314e52f0b842318410/raw/b507142e409cb37aaf70ddb6e0e01b0793b08103/fti-top-25.csv").then( function(data) {
     // Add X axis
     const x = d3.scaleLinear()
         .domain([0, d3.max(data, function(d) { return d.Points * 1.1; })])

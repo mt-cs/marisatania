@@ -14,7 +14,7 @@ function main() {
         .attr("transform", `translate(${global_emission_margin.left},${global_emission_margin.top})`);
 
     // Read the data
-    d3.csv("https://gist.githubusercontent.com/mt-cs/af63c6fa10b442d81bb042ca15cdc152/raw/be200e5e24aeebec45205ec8d034522751f44034/global-emissions-bubble.csv").then( function(data) {
+    d3.csv("https://gist.githubusercontent.com/mt-cs/af63c6fa10b442d81bb042ca15cdc152/raw/fa14ef07afb339fb7bc58075822eeef7065a3d53/global-emissions-bubble.csv").then( function(data) {
 
         // Add X axis --> it is a date format
         const global_emission_x = d3.scaleTime()
@@ -112,8 +112,8 @@ function main() {
             .data(valuesToShow)
             .join("circle")
             .attr("cx", xCircle)
-            .attr("cy", d => yCircle - global_emission_z(d) * 6)
-            .attr("r", d => global_emission_z(d) * 6)
+            .attr("cy", d => yCircle - global_emission_z(d) * 6 / 5)
+            .attr("r", d => global_emission_z(d) * 6 / 5)
             .style("fill", "none")
             .attr("stroke", "black")
 
@@ -122,10 +122,10 @@ function main() {
             .selectAll("legend")
             .data(valuesToShow)
             .join("line")
-            .attr('x1', d => xCircle + global_emission_z(d) * 6)
+            .attr('x1', d => xCircle + global_emission_z(d) * 6 / 5)
             .attr('x2', xLabel)
-            .attr('y1', d => yCircle - global_emission_z(d) * 8)
-            .attr('y2', d => yCircle - global_emission_z(d) * 8)
+            .attr('y1', d => yCircle - global_emission_z(d) * 8 / 5)
+            .attr('y2', d => yCircle - global_emission_z(d) * 8 / 5)
             .attr('stroke', 'black')
             .style('stroke-dasharray', ('2,2'))
 
@@ -135,7 +135,7 @@ function main() {
             .data(valuesToShow)
             .join("text")
             .attr('x', xLabel)
-            .attr('y', d => yCircle - global_emission_z(d) * 8)
+            .attr('y', d => yCircle - global_emission_z(d) * 8 / 5)
             .text( d => d)
             .style("font-size", 9)
             .attr('alignment-baseline', 'middle')
@@ -144,7 +144,7 @@ function main() {
         svg.append("text")
             .attr('x', xCircle + 30)
             .attr("y", global_emission_height - 10)
-            .text("CO2 Emissions (in megatons)")
+            .text("Consumption (in billion)")
             .attr("text-anchor", "middle")
             .style("font-size", 10)
             .style("fill", "#635f5d")
@@ -161,11 +161,11 @@ function main() {
 
         svg.append("text")
             .attr("fill", "black")
-            .attr("x", global_emission_width / 3.5)
+            .attr("x", global_emission_width / 2)
             .attr("y", 280)
             .attr("font-family", "sans-serif")
             .style("font-size", "13px")
-            .text("Consumption (in billion pieces)");
+            .text("Year");
 
     })
 }

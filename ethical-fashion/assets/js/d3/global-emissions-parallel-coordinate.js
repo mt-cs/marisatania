@@ -31,7 +31,7 @@ const makeAnnotations = d3.annotation()
     .annotations(annotations)
 
 // Parse the Data
-d3.csv("https://gist.githubusercontent.com/mt-cs/a0ab1582a2fefb5b6bbe383f9fc414a2/raw/21457b586b075701fc4461dfcbfcc10f51cf1d2c/consumption-emissions.csv").then( function(data) {
+d3.csv("https://gist.githubusercontent.com/mt-cs/a0ab1582a2fefb5b6bbe383f9fc414a2/raw/0d97e9a50ca5c67d713986038f5f4a39642dedc8/consumption-emissions.csv").then( function(data) {
 
     // Extract the list of dimensions we want to keep in the plot. Here I keep all except the column called Species
     const parallel_dimensions = Object.keys(data[0]).filter(function(d) { return d != "Year" })
@@ -39,7 +39,7 @@ d3.csv("https://gist.githubusercontent.com/mt-cs/a0ab1582a2fefb5b6bbe383f9fc414a
     // For each dimension, I build a linear scale. I store all in a y object
     const y = {}
     for (i in parallel_dimensions) {
-        name = parallel_dimensions[i]
+        let name = parallel_dimensions[i]
         y[name] = d3.scaleLinear()
             .domain( d3.extent(data, function(d) { return +d[name]; }) )
             .range([parallel_height, 0])

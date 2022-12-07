@@ -12,13 +12,6 @@ var margin = {top: 100, right: 100, bottom: 100, left: 100},
   ////////////////////////// Data ////////////////////////////// 
   ////////////////////////////////////////////////////////////// 
 
-// var data = [[{axis:"Purchasing Practice", value:0.5},
-//            {axis:"Gender and Racial Equality", value:0.1},
-//            {axis:"Sustainable Sourcing and Material", value:0.6},
-//            {axis:"Overconsumption Waste and Circularity", value:0.5},
-//            {axis:"Water and Chemical", value:0.4},
-//            {axis:"Climate Change and Biodiversity", value:0.5}]]
-
 var data = [[{axis:"Animal Welfare", value:0.576},
 		   {axis:"Biodiversity & Conservation", value:0.556},
            {axis:"Diversity & Inclusion", value:0.75},
@@ -41,10 +34,10 @@ var color = d3.scaleOrdinal()
     w: width,
     h: height,
     margin: margin,
-    maxValue: 1, //für 100 Prozent
+    maxValue: 1,
     levels: 5,
     roundStrokes: true,
-    color: color //
+    color: color
   };
 
   //Callfunction to draw the Radar chart
@@ -68,14 +61,14 @@ function RadarChart(id, data, options) {
 	 color: d3.scaleOrdinal(d3.schemeCategory10) 		//d3.scaleOrdinal().range(schemeCategory10)	//Color function
 	};
 	
-	//Put all of the options into a variable called cfg
+	// Put all of the options into a variable called cfg
 	if('undefined' !== typeof options){
-	  for(var i in options){
+	  for(var i in options) {
 		if('undefined' !== typeof options[i]){ cfg[i] = options[i]; }
 	  }
 	}
 	
-	//If the supplied maxValue is smaller than the actual one, replace by the max in the data
+	// If the supplied maxValue is smaller than the actual one, replace by the max in the data
 	var maxValue = 
       Math.max(
         cfg.maxValue, 
@@ -87,7 +80,7 @@ function RadarChart(id, data, options) {
 		Format = d3.format(".0%"),			 	//Percentage formatting
 		angleSlice = Math.PI * 2 / total;		//The width in radians of each "slice"
 	
-	//Scale for the radius
+	// Scale for the radius
 	var rScale = d3.scaleLinear()
 		.range([0, radius])
 		.domain([0, maxValue]);
@@ -96,10 +89,10 @@ function RadarChart(id, data, options) {
 	//////////// Create the container SVG and g /////////////
 	/////////////////////////////////////////////////////////
 
-	//Remove whatever chart with the same id/class was present before
+	// Remove whatever chart with the same id/class was present before
 	d3.select(id).select("svg").remove();
 	
-	//Initiate the radar chart SVG
+	// Initiate the radar chart SVG
 	var svg = d3.select(id).append("svg")
 			.attr("width",  cfg.w + cfg.margin.left + cfg.margin.right)
 			.attr("height", cfg.h + cfg.margin.top + cfg.margin.bottom)
@@ -123,10 +116,10 @@ function RadarChart(id, data, options) {
 	/////////////// Draw the Circular grid //////////////////
 	/////////////////////////////////////////////////////////
 	
-	//Wrapper for the grid & axes
+	// Wrapper for the grid & axes
 	var axisGrid = g.append("g").attr("class", "axisWrapper");
 	
-	//Draw the background circles
+	// Draw the background circles
 	axisGrid.selectAll(".levels")
 	   .data(d3.range(1,(cfg.levels+1)).reverse())
 	   .enter()
@@ -137,7 +130,7 @@ function RadarChart(id, data, options) {
 		.style("stroke", "#cccccc")
 		.style("fill-opacity", cfg.opacityCircles)
 
-	//Text indicating at what % each level is
+	// Text indicating at what % each level is
 	axisGrid.selectAll(".axisLabel")
 	   .data(d3.range(1,(cfg.levels+1)).reverse())
 	   .enter().append("text")
@@ -153,13 +146,13 @@ function RadarChart(id, data, options) {
 	//////////////////// Draw the axes //////////////////////
 	/////////////////////////////////////////////////////////
 	
-	//Create the straight lines radiating outward from the center
+	// Create the straight lines radiating outward from the center
 	var axis = axisGrid.selectAll(".axis")
 		.data(allAxis)
 		.enter()
 		.append("g")
 		.attr("class", "axis");
-	//Append the lines
+	// Append the lines
 	axis.append("line")
 		.attr("x1", 0)
 		.attr("y1", 0)
@@ -169,7 +162,7 @@ function RadarChart(id, data, options) {
 		.style("stroke", "#848484")
 		.style("stroke-width", "1px");
 
-	//Append the labels at each axis
+	// Append the labels at each axis
 	axis.append("text")
 		.attr("class", "legend")
 		.style("font-size", "11px")
@@ -184,19 +177,19 @@ function RadarChart(id, data, options) {
 	///////////// Draw the radar chart blobs ////////////////
 	/////////////////////////////////////////////////////////
 	
-	//The radial line function
+	// The radial line function
 	var radarLine = d3.radialLine()
 		.radius(function(d) { return rScale(d.value); })
 		.angle(function(d,i) {	return i*angleSlice; })
     .curve(d3.curveLinearClosed);
 				 
-	//Create a wrapper for the blobs	
+	// Create a wrapper for the blobs	
 	var blobWrapper = g.selectAll(".radarWrapper")
 		.data(data)
 		.enter().append("g")
 		.attr("class", "radarWrapper");
 			
-	//Append the backgrounds	
+	// Append the backgrounds	
 	blobWrapper
 		.append("path")
 		.attr("class", "radarArea")
@@ -220,7 +213,7 @@ function RadarChart(id, data, options) {
 				.style("fill-opacity", cfg.opacityArea);
 		});
 		
-	//Create the outlines	
+	// Create the outlines	
 	blobWrapper.append("path")
 		.attr("class", "radarStroke")
 		.attr("d", function(d,i) { return radarLine(d); })
@@ -229,7 +222,7 @@ function RadarChart(id, data, options) {
 		.style("fill", "none")
 		.style("filter" , "url(#glow)");		
   
-  //Append the circles
+  	// Append the circles
 	blobWrapper.selectAll(".radarCircle")
 		.data(function(d,i) { return d; })
 		.enter().append("circle")
@@ -244,13 +237,13 @@ function RadarChart(id, data, options) {
 	//////// Append invisible circles for tooltip ///////////
 	/////////////////////////////////////////////////////////
 	
-	//Wrapper for the invisible circles on top
+	// Wrapper for the invisible circles on top
 	var blobCircleWrapper = g.selectAll(".radarCircleWrapper")
 		.data(data)
 		.enter().append("g")
 		.attr("class", "radarCircleWrapper");
 		
-	//Append a set of invisible circles on top for the mouseover pop-up
+	// Append a set of invisible circles on top for the mouseover pop-up
 	blobCircleWrapper.selectAll(".radarInvisibleCircle")
 		.data(function(d,i) { return d; })
 		.enter().append("circle")
@@ -276,7 +269,7 @@ function RadarChart(id, data, options) {
 				.style("opacity", 0);
 		});
 		
-	//Set up the small tooltip for when you hover over a circle
+	// Set up the small tooltip for when you hover over a circle
 	var tooltip = g.append("text")
 		.attr("class", "tooltip")
 		.style("opacity", 0); 
@@ -285,8 +278,8 @@ function RadarChart(id, data, options) {
 	/////////////////// Helper Function /////////////////////
 	/////////////////////////////////////////////////////////
 
-	//Taken from http://bl.ocks.org/mbostock/7555321
-	//Wraps SVG text	
+	// Taken from http://bl.ocks.org/mbostock/7555321
+	// Wraps SVG text	
 	function wrap(text, width) {
 	  text.each(function() {
 		var text = d3.select(this),
@@ -311,6 +304,6 @@ function RadarChart(id, data, options) {
 		  }
 		}
 	  });
-	}//wrap	
+	} // wrap	
 	
-}//RadarChart
+} // RadarChart

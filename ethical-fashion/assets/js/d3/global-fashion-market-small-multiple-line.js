@@ -1,8 +1,8 @@
 
 // define margin and svg size
 const global_fashion_market_margin = { top: 20, bottom: 40, left: 30, right: 20 };
-const global_fashion_market_width = 200;
-const global_fashion_market_height = 180;
+const global_fashion_market_width = 230;
+const global_fashion_market_height = 210;
 
 // global fashion market small multiples lines
 d3.csv("https://gist.githubusercontent.com/mt-cs/b96f60535299afcbebf3085302d450ba/raw/718f67fb7af31c886e0f892ba3c0a522eb331c15/global-fashion-market.csv", function(d) {
@@ -177,20 +177,20 @@ d3.csv("https://gist.githubusercontent.com/mt-cs/b96f60535299afcbebf3085302d450b
                     return "Fast Fashion";
                 }
             })
-            .attr("font-size", "13px")
+            .attr("font-size", "14px")
 
         d3.select(".global-fashion-market-" + dimension)
             .append("text")
             .attr("x", -20)
             .attr("y", -5)
             .text("Estimated market value (billion USD)")
-            .attr("font-size", "11px")
+            .attr("font-size", "12px")
 
         d3.select(".global-fashion-market-" + dimension)
             .append("text")
             .attr("x", global_fashion_market_width - 20)
             .attr("y", global_fashion_market_height - 10)
             .text("Year")
-            .attr("font-size", "11px")
+            .attr("font-size", "12px")
     }
 })

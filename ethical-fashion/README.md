@@ -32,7 +32,7 @@
         <li><a href="#interactivity">Interaction</a></li>
       </ul>
     </li>
-    <li><a href="#other">Conclusion</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
@@ -40,7 +40,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img width="1351" alt="daily-planner-board" src="https://user-images.githubusercontent.com/60201466/208043214-533bfe3e-3342-48f4-9ad9-dcb12e992078.png">
+<img width="1351" alt="website-header" src="https://user-images.githubusercontent.com/60201466/208043214-533bfe3e-3342-48f4-9ad9-dcb12e992078.png">
 
 There is a growth in the global shift toward a more ethical way to produce and consume fashion. This project uses D3.js to visualize recent facts and predictions regarding ethical fashion trends. There are four main objectives that this project intends to convey: showcase the comparison of the fashion market value, the correlation between apparel consumption and environmental impact, clothing price comparisons, and companies’ fashion transparency index scores. The website presents a story and unique findings from each visualization objective. Additionally, this paper discusses future features that are likely to be implemented.
 
@@ -59,6 +59,8 @@ These are major frameworks/libraries used in this project:
 * D3 SVG Legend 2.25.6: https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js
 * D3 Annotation: https://cdn.rawgit.com/susielu/d3-annotation/75ff6169/d3-annotation.js
 
+To generate the color pallette, use ColorBrewer 2.0: https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3
+
 <!-- User Manual -->
 ## User Manual
 
@@ -75,10 +77,24 @@ Here are instructions on setting up your project locally.
 ```
 cd ethical-fashion
 ```
-* Double click the `index.html` to run the website locally
-
+* To make code changes and test it locally, it is recommended to use extensions like `Live Server` for `VS Code` and launch a live server
+* You can aldo double click the `index.html` to run the website on your localhost
 
 ### Directory
+
+Here is the structure of this directory:
+```
+finalProject/
+├─ assets/
+  ├─ css/
+  ├─ data/
+  ├─ fonts/
+  ├─ img/
+  ├─ js/
+  ├─ src/
+├─ index.html
+├─ README.md
+```
 
 * The D3 javascript files are under assets/js/d3 folder
 * The main CSS is assets/css/style.css
@@ -97,145 +113,24 @@ cd ethical-fashion
   
 
 ### Interaction
+* Hover over the small-multiple line charts to show the year and market value.
+<img width="300" alt="line-chart" src="https://user-images.githubusercontent.com/60201466/208044253-926e9e46-82ca-4702-ac33-de6a585d9175.png">
+
+* Scroll horizontally on the interactive small multiple-line chart to highlight all three markets and see the comparison
+<img width="600" alt="interactive-line-chart" src="https://user-images.githubusercontent.com/60201466/208044058-381d7ec0-d5d1-41e1-9a67-a43ccd2b61a2.png">
+
+* Hover over each circle of the bubble chart to show the year, consumptions volume, and CO2 emissions
+<img width="1000" alt="emissions-charts" src="https://user-images.githubusercontent.com/60201466/208044669-7ddbd6ec-2eb1-4fe2-a650-123c2724b7ee.png">
+
+* Hover over the each point of the radar graph to show the score percentage of each subcategories
+<img width="350" alt="radar-graph" src="https://user-images.githubusercontent.com/60201466/208044894-8ca9c72d-0547-48bd-ac44-6a8b8c1da70c.png">
+
+* Click the two buttons on top of the lollipop chart to sort by brand name or by score
+* Hover on the lollipop circle to show the score of each brand
+<img width="350" alt="lollipop-chart" src="https://user-images.githubusercontent.com/60201466/208045018-921734f3-28ce-4b5d-95fb-beb06c69a085.png">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-## Developer Guide
-Steps to run Daily Planner in local environment during development stage:
-
-### Development branch
-* Git clone https://github.com/good-river/daily-planner.git
-* Create a new working branch from `dev`
-```
-git checkout -b {NEW_BRANCH} dev
-```
-* Install dependencies
-```
-pip install -r requirements.txt
-```
-
-### Database Setup
-* Migration
-```
-flask db migrate
-```
-* Upgrade
-```
-flask db upgrade
-```
-* For development: clean up user table
-```
-sqlite3 app.db
-```
-```
-delete from user;
-```
-
-### Run Server
-* Run flask
-```
-flask run --port={PORT} 
-```
-* Run [Ngrok](https://ngrok.com/download)
-```
-ngrok http --host-header=rewrite {PORT}
-```
-
-### Google Credentials
-
-<img src="https://user-images.githubusercontent.com/60201466/206065901-8f0f8834-8210-4e0b-837f-beb59b55ca6e.png" alt="Google-Trello" width="275">
-
-In order to integrate Google Calendar, we need to setup Google developer credentials.
-* Go to https://console.cloud.google.com/apis/credentials
-* Sign in with your Google account if you haven't already
-* Add your email to the test users section on the Oauth consent screen https://console.cloud.google.com/apis/credentials/consent
-* Get your API key https://console.cloud.google.com/apis/credentials/key/
-* Create OAuth client https://console.cloud.google.com/apis/credentials/oauthclient/
-* Add your NGROK URL to Authorized Javascript Origin
-* Save your credentials information
-
-### Configuration
-Add local development values by creating an .env file:
-```
-TEMPLATE_BOARD_ID={636b554ea9418404ce8d63b9}
-API_KEY={API key}
-URL={NGROK HTTPS URL}
-PLUGIN_ID={Daily Planner Trello Power-Up Plugin ID}
-GOOGLE_CLIENT_ID={Google client ID}
-GOOGLE_API_KEY={Google API key}
-```
-
-### Create Power-Up
-
-* Go to https://trello.com/power-ups/admin and create a power-up using these Iframe connector URLs:
-    * Daily Planner: `https://[NGROK URL].ngrok.io/template/index.html`
-* Remember to adjust power-up capabilities as needed: `Board buttons`
-* Go to the power-up's API-key section. You can create a new API key or add the existing API key from https://trello.com/app-key/. Update the API_KEY in your `.env`
-* Add Ngrok public URL to the power-up allowed origins as well as https://trello.com/app-key/ allowed origins section.
-* Add Daily Planner power-up to your Trello board
-* Click the daily planner button and an pop up should redirect you to Daily Planner template
-
-You can also go directly to Daily Planner Template:
-* Create board from the public Daily Planner Template: https://trello.com/b/fKUVJSrY/daily-planner
-* Add Daily Planner power-up to your Daily Planner Template board
-* Click the daily planner button and an authorization modal should pop up.
-
-### Get Dev Plugin ID
-If you are running a new power-up for the first time, you want to update the idPlugin in your `.env`. 
-
-Get the ID plugin from the JWT printed on the console and decode it through https://jwt.io/. Copy the idPlugin and update your `.env`
-
-
-## Tests
-Run on command line for automated testing:
-```
-touch conftest.py
-```
-
-Run all tests:
-```
-pytest
-```
-
-Run an individual test:
-```
-pytest /directory_of_the_test.py
-```
-
-
-## Diagrams
-### Front End
-![Architecture-App-Front-End](https://user-images.githubusercontent.com/60201466/206064610-cdefe712-4f24-470c-bd39-ae517337e6f6.png)
-
-### Back End
-![Architecture-Platform-Backend](https://user-images.githubusercontent.com/60201466/206064746-a1cf0771-8786-4b9a-a5e0-69f5dbcefd06.png)
-
-
-## Wireframes
-### Board Design
-![Architecture-App-Board-Design](https://user-images.githubusercontent.com/60201466/206065203-e440a8de-6912-4c38-931f-43250fdef46c.png)
-
-### Application Flow
-![Architecture-App-Flow](https://user-images.githubusercontent.com/60201466/206064868-3ec4f8b1-701d-4cd0-9210-006775ae2c09.png)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] A pre-configured Trello Template Board user-interface that shows each day of the week as an individual list
-- [x] Create an authorization page on the Trello to get user consent and token
-- [x] Set up database and store Trello’s token to the database
-- [x] Set up configuration files
-- [x] Create left and right arrow buttons to load different week
-- [x] Create an authorization page to get consent from the user to access their Google Calendar
-- [x] A modal display that adds Google Events to Trello Cards
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-## Other
-For more information, please check: https://whimsical.com/daily-planner-L4VqSeT6GsJ9fi5AtXizcu
+## Contact
+For more information, feel free to reach out at: mtania@dons.usfca.edu
 

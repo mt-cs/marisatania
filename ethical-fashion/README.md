@@ -3,11 +3,10 @@
 <!-- PROJECT LOGO -->
 <br/>
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/60201466/206052990-e2460e60-3b0d-48ec-afc9-ff212aa7ceab.png" alt="Logo" width="250" height="250">
-   
-  <h3 align="center">Daily Planner</h3>
+  <img src="https://user-images.githubusercontent.com/60201466/208038415-8ea9e060-5680-43a9-a806-6dcd0831a5df.png" alt="Logo" width="150">  
+  <h3 align="center">Ethical Fashion</h3>
   <p align="center">
-    Daily Planner for Developers
+    Wear With Care
     <br />
   </p>
 </div>
@@ -20,33 +19,20 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#website">Website</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#getting-started">User Manual</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#directory">Directory</a></li>
+        <li><a href="#interactivity">Interaction</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#developer-guide">Developer Guide</a>
-      <ul>
-        <li><a href="#development-branch">Development Branch</a></li>
-        <li><a href="#database-setup">Database Setup</a></li>
-        <li><a href="#google-credentials">Google Credentials</a></li>
-        <li><a href="#installation">Configuration</a></li>
-        <li><a href="#create-power-up">Create Power-Up</a></li>
-        <li><a href="#run-server">Run Server</a></li>
-        <li><a href="#get-dev-plugin-id">Get Dev Plugin ID</a></li>
-      </ul>
-    </li>
-    <li><a href="#tests">Tests</a></li>
-    <li><a href="#diagrams">Diagrams</a></li>
-    <li><a href="#wireframes">Wireframes</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#other">Other</a></li>
+    <li><a href="#other">Conclusion</a></li>
   </ol>
 </details>
 
@@ -54,60 +40,63 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img width="1351" alt="daily-planner-board" src="https://user-images.githubusercontent.com/60201466/206057074-1bd38d7e-c8e4-4386-b818-465ca7f4302c.png">
+<img width="1351" alt="daily-planner-board" src="https://user-images.githubusercontent.com/60201466/208043214-533bfe3e-3342-48f4-9ad9-dcb12e992078.png">
 
-Daily Planner is a [Trello Power-Up](https://support.atlassian.com/trello/docs/what-are-power-ups/) that integrates Google Calendar events, Jira tickets, and GitHub Issues into a single weekly plan view. The Power-up enables users to organize tasks from the three platforms by day using a proven strategy called timeblocking.
-
-This Fall 2022 project scope focuses on building the foundation and core functionality of the Daily Planner Board and Google Calendar integration. Users can create their board using the provided Daily Planner Template, add a seven days to-do list, and connect tasks from their calendar.
+There is a growth in the global shift toward a more ethical way to produce and consume fashion. This project uses D3.js to visualize recent facts and predictions regarding ethical fashion trends. There are four main objectives that this project intends to convey: showcase the comparison of the fashion market value, the correlation between apparel consumption and environmental impact, clothing price comparisons, and companies’ fashion transparency index scores. The website presents a story and unique findings from each visualization objective. Additionally, this paper discusses future features that are likely to be implemented.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Website
+The project website is deployed with Github Page: https://mt-cs.github.io/marisatania/ethical-fashion/
+
+For the best interaction experience, use Google Chrome on 100% view scale.
 
 ### Built With
 
 These are major frameworks/libraries used in this project:
 
-* [![JavaScript](https://img.shields.io/static/v1?label=&message=JavaScript&color=F7DF1E&logo=JavaScript&logoColor=FFFFFF)](https://www.javascript.com/) 
-* [![Python](https://img.shields.io/static/v1?label=&message=Python&color=3776AB&logo=Python&logoColor=FFFFFF)](https://www.python.org/) 
-* [![Flask](https://img.shields.io/static/v1?label=&message=Flask&color=000000&logo=Flask&logoColor=FFFFFF)](https://flask.palletsprojects.com/en/2.1.x/) 
-* [![SQLite](https://img.shields.io/static/v1?label=&message=SQLite&color=0F52BA&logo=SQLite&logoColor=FFFFFF)](https://www.sqlite.org/index.html) 
-* [![SQLAlchemy](https://img.shields.io/static/v1?label=&message=SQLAlchemy&color=C70039&logo=SQLAlchemy&logoColor=FFFFFF)](https://www.sqlalchemy.org/)
+* D3.js 7.7.0: https://d3js.org/d3.v7.min.js
+* D3 SVG Legend 2.25.6: https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js
+* D3 Annotation: https://cdn.rawgit.com/susielu/d3-annotation/75ff6169/d3-annotation.js
 
-<!-- GETTING STARTED -->
-## Getting Started
+<!-- User Manual -->
+## User Manual
 
 Here are instructions on setting up your project locally.
 
 ### Prerequisites
-
-#### Installing python with homebrew
-* Homebrew is a Package Manager used to install MacOS development tools. 
-* Install it first if you don't already have it. https://brew.sh/
-* Should be a simple `brew install python` but read and follow these instructions.
-https://docs.python-guide.org/starting/install3/osx/
-
-#### Install venv for virtual environments
-* You may need to run pip install virtualenv if the command `virtualenv` is not found. https://docs.python-guide.org/dev/virtualenvs/#virtualenvironments-ref
-
-Create a virtualenv
-```
-virtualenv -p python3 .venv
-```
-#### Get a working virtualenv
-Activate the virtual environment
-```
-source .venv/bin/activate
-```
+* D3.js is an open-source library and the source code of the library is freely available on the web at https://d3js.org/ website. * Download the D3.js v7. As of now, the latest version is 7.7.0.
+* After the download is complete, unzip the file and look for d3.min.js.
+* Copy the d3.min.js file and paste it into your project's root folder or any other folder, where you want to keep all the library files.
 
 ### Installation
-Install packages for daily-planner
+* Git clone this repository: https://github.com/mt-cs/marisatania.git
+* Go to the ethical fashion folder
 ```
-pip install -r requirements.txt
+cd ethical-fashion
 ```
-Run the flask server
-```
-flask run
-```
+* Double click the `index.html` to run the website locally
+
+
+### Directory
+
+* The D3 javascript files are under assets/js/d3 folder
+* The main CSS is assets/css/style.css
+* The html codes that are combined using iframe are located in assets/src
+* The datasets used in this project can be found in assets/data or these following gist links:
+  * fashion-market-category.tsv: https://gist.github.com/mt-cs/67498e4c1eb3eae2b8801e1a86e6193b
+  * fti-top-25-brand.csv: https://gist.github.com/mt-cs/39bc9845f47653d77bda0aaf5d3951f1
+  * fti-top-25.csv: https://gist.github.com/mt-cs/219b191cff5410314e52f0b842318410
+  * global-emissions-bubble.csv: https://gist.github.com/mt-cs/af63c6fa10b442d81bb042ca15cdc152
+  * global-emissions.csv: https://gist.github.com/mt-cs/89d001bcf619ef775dc1597bf6f17887
+  * global-fashion-market.csv: https://gist.github.com/mt-cs/b96f60535299afcbebf3085302d450ba
+  * male-price.csv: https://gist.github.com/mt-cs/7a7a015f377f35babfc698386dc2ec65
+  * female-price.csv: https://gist.github.com/mt-cs/0769e3b43e00311427476811832c7d31
+  * consumption-emissions.csv: https://gist.github.com/mt-cs/a0ab1582a2fefb5b6bbe383f9fc414a2
+ 
+  
+
+### Interaction
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

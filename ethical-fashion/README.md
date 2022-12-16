@@ -29,7 +29,7 @@
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
         <li><a href="#directory">Directory</a></li>
-        <li><a href="#interactivity">Interaction</a></li>
+        <li><a href="#interaction">Interaction</a></li>
       </ul>
     </li>
     <li><a href="#contact">Contact</a></li>

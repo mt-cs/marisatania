@@ -82,7 +82,7 @@ cd ethical-fashion
 
 ### Directory
 
-Here is the structure of this directory:
+Here is the project structure:
 ```
 finalProject/
 ├─ assets/
